@@ -2,7 +2,7 @@ const db = require('../database/dbConfig')
 
 module.exports = {
     add,
-    getById
+    getBy
 }
 
 function add(user) {
@@ -18,7 +18,7 @@ function add(user) {
     }
 }
 
-function getById(id) {
+function getBy(filter) {
     return db("users")
-    .where("id", id)
+    .where(filter)
 }
