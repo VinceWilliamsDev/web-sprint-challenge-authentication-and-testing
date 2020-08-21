@@ -12,7 +12,7 @@ router.post('/register', validateUserRequest, (req, res) => {
 
   users.add(credentials)
     .then(id => {
-      res.json({id})
+      res.status(201).json({id})
     })
     .catch(err => {
       res.status(500).json({error: "There was a problem adding the record to the database"})
@@ -31,6 +31,8 @@ router.post('/login', validateUserRequest, (req, res) => {
           message: "you are now logged in",
           token
         })
+      } else {
+        res.status(401).json({error: "invalid login attempt"})
       }
     })
 });
